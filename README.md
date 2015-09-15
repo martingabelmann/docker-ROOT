@@ -12,7 +12,7 @@ docker run --rm martingabelmann/root --help
 
 ### complie single c++ file 
 Assuming you've a script to compile at ``/your/work/dir/rootfile.cc``:
- 
+
 ```bash
 cd /your/work/dir/
 docker run --rm -v $PWD:/tmp/ martingabelmann/root -c rootfile.cc -o binary.out
@@ -21,7 +21,7 @@ the ``-o`` flag is optional. If not set, the binary is called ``rootfile.out``.
 
 Then simply run your new binary with
 ```bash
-docker run --rm -ti -v $PWD:/tmp/ local/root run binary.out
+docker run --rm -ti -v $PWD:/tmp/ martingabelmann/root run binary.out
 ```
 
 ### linking stuff together
@@ -32,9 +32,9 @@ may will be supported in future
 join a containers bash with
 
 ```bash
-docker run --rm -ti -v $PWD:/tmp/ local/root bash 
+docker run --rm -ti -v $PWD:/tmp/ martingabelmann/root bash
 ```
-to manage more complex situattions. 
+to manage more complex situattions.
 
 You can spawn R00T by typing ``root`` (not well tested) but all gui features will not work.
 
