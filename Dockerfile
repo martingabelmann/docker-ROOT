@@ -7,20 +7,19 @@ RUN apt-get install -y git dpkg-dev make g++ gcc \
     libxext-dev libpng12-dev libjpeg-turbo8-dev \
     python gfortran libssl-dev wget
 
-ENV ROOT_TAR="root_v6.04.02.Linux-ubuntu14-x86_64-gcc4.8.tar.gz"
-ENV ROOT_DL="https://root.cern.ch/download/$ROOT_TAR"
-
-ENV ROOTSYS="/cern/root/"
+ENV ROOT_VERSION="6.05.02"
+ENV ROOT_TAR="root_v${ROOT_VERSION}.source.tar.gz" \
+    ROOT_DL="https://root.cern.ch/download/root_v${ROOT_VERSION}.source.tar.gz" \
+    ROOTSYS="/cern/root-${ROOT_VERSION}"
 ENV PATH="$ROOTSYS/bin:$PATH" \
     LD_LIBRARY_PATH="$ROOTSYS/lib:$LD_LIBRARY_PATH" 
 
 RUN mkdir /cern && cd /cern \
     && wget $ROOT_DL \
-    && tar xzfv $ROOT_TAR #\
-#    && rm -f $ROOT_TAR
-
-RUN cd $ROOTSYS \
-    && ./configure linux \
+    && tar xzfv $ROOT_TAR \
+    && rm -f $ROOT_TAR \
+    && cd $ROOTSYS \
+    && ./configure linuxx8664gcc \
     && make
 
 ADD run-root /usr/local/sbin/run-root
