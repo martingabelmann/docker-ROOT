@@ -21,7 +21,7 @@ The ``-o`` flag is optional: if not set, the binary is called ``rootfile.out``.
 
 Then run your new binary with
 ```bash
-docker run --rm -ti -v $PWD:/tmp/ martingabelmann/root run binary.out
+docker run --rm -ti -v $PWD:/tmp/ martingabelmann/root -r binary.out
 ```
 
 ## Manage more complex situations
